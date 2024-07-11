@@ -17,17 +17,17 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Title</th>
-          <th scope="col">Description</th>
-          <th scope="col">Images</th>
+          <th scope="col">Tên phim</th>
+          <th scope="col">Mô tả</th>
+          <th scope="col">Hình ảnh</th>
           {{-- <th scope="col">Slug</th> --}}
           <th scope="col">Số tập</th>
-          <th scope="col">Status</th>
-          <th scope="col">Categories</th>
-          <th scope="col">Genres</th>
-          <th scope="col">Countries</th>
+          <th scope="col">Trạng thái</th>
+          <th scope="col">Danh mục</th>
+          <th scope="col">Thể loại</th>
+          <th scope="col">Quốc gia</th>
           <th scope="col">Thịnh hành</th>
-          <th scope="col">Operation</th>
+          <th scope="col">Hành động</th>
         </tr>
       </thead>
       <tbody class="table-group-divider">
@@ -57,11 +57,11 @@
           </td>
           <td>
             <div class="btn-group">
-              <a class="btn btn-warning mx-1" href="{{ route('Movie.edit',[$cate_phim->id]) }}">Edit</a>
+              <a class="btn btn-warning mx-1" href="{{ route('Movie.edit',[$cate_phim->id]) }}">Sửa</a>
                 <form onsubmit="return confirm('Bạn có muốn xóa hàng này không ?')" action="{{ route('Movie.destroy',[$cate_phim->id]) }}" method="POST">
                     @method('DELETE')
                     @csrf
-                    <input type="submit" class="btn btn-danger" value="Delete">
+                    <input type="submit" class="btn btn-danger" value="Xóa">
                 </form>
             </div>
           </td>

@@ -288,6 +288,20 @@
 <script src="{{ asset('backend/dist/js/pages/dashboard3.js') }}"></script>
 <script src="//cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
 <script>let table = new DataTable('#myTable');</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.select-movie').change(function() { 
+      var id = $(this).val();
+      $.ajax({
+        url: "{{ route('select-movie', '') }}/" + id, // Corrected the URL formation
+        method: "GET",
+        success: function(data) {
+          $('#episode').html(data);
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>
 
@@ -295,19 +309,6 @@
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-      $('.select-movie').change(function() { // Fixing the change function syntax
-        var id = $(this).val();
-        $.ajax({
-          url: "{{ route('select-movie') }}",
-          method: "GET",
-          data: { id: id },
-          success: function(data) {
-            $('#episode').html(data);
-          }
-        });
-      });
-    </script>    
 </body>
 </html>
   

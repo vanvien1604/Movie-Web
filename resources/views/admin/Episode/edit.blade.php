@@ -21,7 +21,7 @@
         <div class="card-body">
           <div class="form-group">
               <label for="exampleSelect1">Chọn phim</label>
-              <select class="form-control" id="exampleSelect1" name="movie_id">
+              <select class="form-control select-movie" id="exampleSelect1" name="movie_id">
                   @foreach ($list_movie as $key => $list_mov)
                       <option value="{{ $list_mov->id }}">{{ $list_mov->title }}</option>
                   @endforeach
@@ -34,7 +34,7 @@
           <div class="form-group">
               <label for="exampleSelect1">Tập</label>
               <select class="form-control" id="episode" name="episode">
-                  <option value="1">1</option>
+
               </select>
             </div>
             
@@ -42,7 +42,7 @@
       <!-- /.card-body -->
 
       <div class="card-footer">
-        <button type="submit" class="btn btn-primary">Updated</button>
+        <button type="submit" class="btn btn-primary">Cập nhật</button>
       </div>
     </form>
   </div>

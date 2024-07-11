@@ -19,11 +19,11 @@
         @csrf
       <div class="card-body">
         <div class="form-group">
-          <label for="exampleInputEmail1">Title</label>
+          <label for="exampleInputEmail1">Tên phim</label>
           <input type="name" name="title" class="form-control" id="exampleInputEmail1" placeholder="...">
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Description</label>
+          <label for="exampleInputPassword1">Mô tả</label>
           <input type="text" name="description" class="form-control" id="exampleInputPassword1" placeholder="...">
         </div>
         <div class="form-group">
@@ -81,7 +81,7 @@
       <!-- /.card-body -->
 
       <div class="card-footer">
-        <button type="submit" class="btn btn-primary">Add new create</button>
+        <button type="submit" class="btn btn-primary">Thêm mới</button>
       </div>
     </form>
   </div>

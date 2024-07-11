@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 <div class="card card-primary">
     <div class="card-header">
@@ -20,7 +21,7 @@
       <div class="card-body">
         <div class="form-group">
             <label for="exampleSelect1">Chọn phim</label>
-            <select class="form-control" id="exampleSelect1" name="movie_id">
+            <select class="form-control select-movie" id="exampleSelect1" name="movie_id"> <!-- Add class 'select-movie' -->
                 @foreach ($list_movie as $key => $list_mov)
                     <option value="{{ $list_mov->id }}">{{ $list_mov->title }}</option>
                 @endforeach
@@ -33,7 +34,7 @@
         <div class="form-group">
             <label for="exampleSelect1">Tập</label>
             <select class="form-control" id="episode" name="episode">
-                <option value="1">1</option>
+              
             </select>
           </div>
           
@@ -41,8 +42,9 @@
       <!-- /.card-body -->
 
       <div class="card-footer">
-        <button type="submit" class="btn btn-primary">Add new create</button>
+        <button type="submit" class="btn btn-primary">Thêm mới</button>
       </div>
     </form>
   </div>
+
 @endsection

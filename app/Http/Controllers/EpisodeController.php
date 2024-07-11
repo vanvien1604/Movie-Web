@@ -13,7 +13,7 @@ class EpisodeController extends Controller
      */
     public function index()
     {
-        $Episodes = Episode::orderBy('id','DESC')->get();
+        $Episodes = Episode::with('Movie')->orderBy('id','DESC')->get();
         return view('admin.Episode.index',compact('Episodes'));
     }
 
@@ -90,19 +90,18 @@ class EpisodeController extends Controller
         }
     }
 
-    public function select_movie()
-    {
-        $id = $_GET['id'];
-        $Movie = Movie::find($id);
-        if ($Movie) {
-            $output = '<option>--- chọn tập phim ---</option>';
-            for ($i = 1; $i <= $Movie->sotap; $i++) {
-                $output .= '<option value="'.$i.'">'.$i.'</option>';
-            }
-        } else {
-            $output = '<option>Không tìm thấy phim</option>';
+    public function select_movie(string $id)
+{
+    $Movie = Movie::find($id);
+    if ($Movie) {
+        $output = '<option>--- chọn tập phim ---</option>';
+        for ($i = 1; $i <= $Movie->sotap; $i++) {
+            $output .= '<option value="'.$i.'">'.$i.'</option>';
         }
-        return response()->json($output); // Ensure output is returned
+    } else {
+        $output = '<option>Không tìm thấy phim</option>';
     }
+    return response()->json($output);
+}
     
 }

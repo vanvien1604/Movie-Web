@@ -17,12 +17,12 @@
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Title</th>
-          <th scope="col">Description</th>
-          <th scope="col">Status</th>
-          <th scope="col">Create data</th>
-          <th scope="col">Updated data</th>
-          <th scope="col">Operation</th>
+          <th scope="col">Tên thể loại</th>
+          <th scope="col">Mô tả</th>
+          <th scope="col">Trạng thái</th>
+          <th scope="col">Thời gian tạo</th>
+          <th scope="col">Thời gian cập nhật</th>
+          <th scope="col">Hành động</th>
         </tr>
       </thead>
       <tbody class="table-group-divider">
@@ -40,15 +40,15 @@
               <span class="text text-danger">Không hiển thị</span>
               @endif
           </td>
-          <td>{{ $tl->updated_at }}</td>
           <td>{{ $tl->created_at }}</td>
+          <td>{{ $tl->updated_at }}</td>
           <td>
             <div class="btn-group">
-              <a class="btn btn-warning mx-1" href="{{ route('Genre.edit',[$tl->id]) }}">Edit</a>
+              <a class="btn btn-warning mx-1" href="{{ route('Genre.edit',[$tl->id]) }}">Sửa</a>
                 <form onsubmit="return confirm('Bạn có muốn xóa hàng này không ?')" action="{{ route('Genre.destroy',[$tl->id]) }}" method="POST">
                     @method('DELETE')
                     @csrf
-                    <input type="submit" class="btn btn-danger" value="Delete">
+                    <input type="submit" class="btn btn-danger" value="Xóa">
                 </form>
             </div>
           </td>

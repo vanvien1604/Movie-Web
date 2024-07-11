@@ -2,7 +2,7 @@
 @section('content')
 <div class="card card-primary">
     <div class="card-header">
-      <h3 class="card-title">Edit categories</h3>
+      <h3 class="card-title">Cập nhật danh mục</h3>
     </div>
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -20,11 +20,11 @@
         @csrf
       <div class="card-body">
         <div class="form-group">
-          <label for="exampleInputEmail1">Title</label>
+          <label for="exampleInputEmail1">Tên danh mục</label>
           <input type="name" name="title" class="form-control" value="{{ $Category->title }}" id="exampleInputEmail1" placeholder="Nhập dữ liệu...">
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Description</label>
+          <label for="exampleInputPassword1">Mô tả</label>
           <input type="text" name="description" class="form-control" value="{{ $Category->description }}" id="exampleInputPassword1" placeholder="Nhập dữ liệu...">
         </div>
         {{-- <div class="form-group">
@@ -48,7 +48,7 @@
       <!-- /.card-body -->
 
       <div class="card-footer">
-        <button type="submit" class="btn btn-primary">Updated</button>
+        <button type="submit" class="btn btn-primary">Cập nhật</button>
       </div>
     </form>
   </div>

@@ -16,7 +16,6 @@ Route::get('/quoc-gia/{slug}',[PagesController::class,'country'])->name('country
 Route::get('/phim/{slug}',[PagesController::class,'movie'])->name('movie');
 Route::get('/xem-phim/{slug}',[PagesController::class,'watch'])->name('watch');
 Route::get('/episode/{slug}',[PagesController::class,'episode'])->name('episode');
-Route::get('/select-movie',[PagesController::class,'select_movie'])->name('select-movie');
 
 Auth::routes();
 
@@ -28,4 +27,4 @@ Route::resource('Genre', GenreController::class);
 Route::resource('Movie', MovieController::class);
 Route::resource('Country', CountryController::class);
 Route::resource('Episode', EpisodeController::class);
-Route::get('/select-movie', [EpisodeController::class, 'select_movie'])->name('select-movie');
+Route::get('/select-movie/{id}', [EpisodeController::class, 'select_movie'])->name('select-movie');

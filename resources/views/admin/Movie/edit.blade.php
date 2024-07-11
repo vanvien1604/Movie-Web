@@ -20,11 +20,11 @@
         @csrf
       <div class="card-body">
         <div class="form-group">
-          <label for="exampleInputEmail1">Title</label>
+          <label for="exampleInputEmail1">Tên phim</label>
           <input type="name" name="title" class="form-control" id="exampleInputEmail1" value="{{ $Movies->title }}" placeholder="...">
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Description</label>
+          <label for="exampleInputPassword1">Mô tả</label>
           <input type="text" name="description" class="form-control" id="exampleInputPassword1" value="{{ $Movies->description }}" placeholder="...">
         </div>
         <div class="form-group">
@@ -83,7 +83,7 @@
       <!-- /.card-body -->
 
       <div class="card-footer">
-        <button type="submit" class="btn btn-primary">Updated</button>
+        <button type="submit" class="btn btn-primary">Cập nhật</button>
       </div>
     </form>
   </div>
