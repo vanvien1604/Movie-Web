@@ -17,8 +17,9 @@ class PagesController extends Controller
         $phimhot = Movie::where('phim_thinh_hanh',1)->get();
         $Genres = Genre::orderBy('id', 'DESC')->get();
         $Countries = Country::orderBy('id', 'DESC')->get();
+        $Episodes = Episode::with('Movie')->orderBy('episode', 'DESC')->get();
         $Categories_home = Category::with('Movie')->orderBy('id', 'DESC')->where('status',1)->get();
-        return view('pages.home', compact('Categories','Genres','Countries','Categories_home', 'phimhot'));
+        return view('pages.home', compact('Categories','Genres','Countries','Categories_home', 'phimhot', 'Episodes'));
     }
     public function category($slug){
         $Categories = Category::orderBy('id', 'DESC')->where('status',1)->get();
@@ -51,22 +52,30 @@ class PagesController extends Controller
         $Genres = Genre::orderBy('id', 'DESC')->get();
         $Countries = Country::orderBy('id', 'DESC')->get();
         $Movie = Movie::with('Category', 'Genre', 'Country')->where('slug', $slug)->orderBy('id', 'DESC')->where('status', 1)->first();
+        $episode_tapdau = Episode::with('Movie')->where('movie_id',$Movie->id)->orderBy('episode', 'ASC')->take(1)->first();
         $Movielq = Movie::with('Category', 'Genre', 'Country')
             ->where('category_id', $Movie->Category->id)
             ->orderBy(DB::raw('RAND()'))
             ->get();
-        return view('pages.movie', compact('Categories', 'Genres', 'Countries', 'Movie', 'Movielq'));
+        return view('pages.movie', compact('Categories', 'Genres', 'Countries', 'Movie', 'Movielq', 'episode_tapdau'));
     }
-    public function watch($slug){
+    public function watch($slug,$tap){
+        if(isset($tap)){
+            $tapphim = $tap;
+        }else{
+            $tapphim = 1;
+        }
+        $tapphim = substr($tap, 4,1);
         $Categories = Category::orderBy('id', 'DESC')->where('status',1)->get();
         $Genres = Genre::orderBy('id', 'DESC')->get();
         $Countries = Country::orderBy('id', 'DESC')->get();
         $Movie = Movie::with('Category','Genre','Country','episode')->where('slug',$slug)->where('status',1)->first();
+        $Episode = Episode::where('movie_id', $Movie->id)->where('episode', $tapphim)->first();
         $Movielq = Movie::with('Category', 'Genre', 'Country')
             ->where('category_id', $Movie->Category->id)
             ->orderBy(DB::raw('RAND()'))
             ->get();
-        return view('pages.watch', compact('Categories','Genres','Countries','Movie','Movielq'));
+        return view('pages.watch', compact('Categories','Genres','Countries','Movie','Movielq','Episode', 'tapphim'));
     }
     public function episode(){
         return view('pages.episode');

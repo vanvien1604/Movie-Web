@@ -22,6 +22,7 @@
           <th scope="col">Hình ảnh</th>
           {{-- <th scope="col">Slug</th> --}}
           <th scope="col">Số tập</th>
+          <th scope="col">Phụ đề</th>
           <th scope="col">Trạng thái</th>
           <th scope="col">Danh mục</th>
           <th scope="col">Thể loại</th>
@@ -38,6 +39,15 @@
           <td>{{ $cate_phim->description }}</td>
           <td><img width="80px" height="100px" src="{{ asset('backend/uploads/Movies/'.$cate_phim->image) }}" alt=""></td>
           <td>{{ $cate_phim->sotap }}</td>
+          <td>
+            @if($cate_phim->ngon_ngu==0)
+            <span class="text">Vietsub</span>
+            @elseif($cate_phim->ngon_ngu == 1)
+            <span class="text">Thuyết minh</span>
+            @else
+            <span class="text">Tiếng việt</span>
+            @endif
+        </td>
           <td>
               @if($cate_phim->status==1)
               <span class="text text-success">Hiển thị</span>

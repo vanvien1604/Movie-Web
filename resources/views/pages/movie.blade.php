@@ -39,7 +39,7 @@
                         <img class="movie-thumb" src="{{ asset('backend/uploads/Movies/'.$Movie->image) }}" alt="{{ $Movie->title }}">
                         <div class="bwa-content">
                            <div class="loader"></div>
-                           <a href="{{ route('watch',[$Movie->slug]) }}" class="bwac-btn">
+                           <a href="{{ url('xem-phim/'.$Movie->slug.'/tap-'.$episode_tapdau->episode) }}" class="bwac-btn">
                            <i class="fa fa-play"></i>
                            </a>
                         </div>
@@ -48,7 +48,15 @@
                         <h1 class="movie-title title-1" style="display:block;line-height:35px;margin-bottom: -14px;color: #ffed4d;text-transform: uppercase;font-size: 18px;">{{ $Movie->title }}</h1>
                         <h2 class="movie-title title-2" style="font-size: 12px;">Black Widow (2021)</h2>
                         <ul class="list-info-group">
-                           <li class="list-info-group-item"><span>Trạng Thái</span> : <span class="quality">HD</span><span class="episode">Vietsub</span></li>
+                           <li class="list-info-group-item"><span>Trạng Thái</span> : <span class="quality">HD</span><span class="episode">
+                              @if($Movie->ngon_ngu==0)
+                              <span class="text">Vietsub</span>
+                              @elseif($Movie->ngon_ngu == 1)
+                              <span class="text">Thuyết minh</span>
+                              @else
+                              <span class="text">Tiếng việt</span>
+                              @endif</span>    
+                           </span></li>
                            <li class="list-info-group-item"><span>Thời lượng</span> : 133 Phút</li>
                            <li class="list-info-group-item"><span>Tập phim</span> : {{ $Movie->sotap }}</li>
                            <li class="list-info-group-item"><span>Thể loại</span> : <a href="" rel="category tag">{{ $Movie->Genre->title }}</a></li>

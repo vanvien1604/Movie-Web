@@ -33,7 +33,7 @@
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="{{ route('Categories.create') }}" class="nav-link">
-                      <i class="fa-solid fa-pen-to-square pl-1 pr-2"></i>
+                      <i class="far fa-circle nav-icon"></i>
                       <p>Thêm mới</p>
                     </a>
                   </li>
@@ -41,7 +41,7 @@
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
                       <a href="{{ route('Categories.index') }}" class="nav-link">
-                        <i class="fa-solid fa-bars-staggered pl-1 pr-2"></i>
+                        <i class="far fa-circle nav-icon"></i>
                         <p>Danh sách</p>
                       </a>
                     </li>
@@ -58,7 +58,7 @@
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
                       <a href="{{ route('Genre.create') }}" class="nav-link">
-                        <i class="fa-solid fa-pen-to-square pl-1 pr-2"></i>
+                        <i class="far fa-circle nav-icon"></i>
                         <p>Thêm mới</p>
                       </a>
                     </li>
@@ -66,7 +66,7 @@
                   <ul class="nav nav-treeview">
                       <li class="nav-item">
                         <a href="{{ route('Genre.index') }}" class="nav-link">
-                          <i class="fa-solid fa-bars-staggered pl-1 pr-2"></i>
+                          <i class="far fa-circle nav-icon"></i>
                           <p>Danh sách</p>
                         </a>
                       </li>
@@ -83,7 +83,7 @@
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
                       <a href="{{ route('Country.create') }}" class="nav-link">
-                        <i class="fa-solid fa-pen-to-square pl-1 pr-2"></i>
+                        <i class="far fa-circle nav-icon"></i>
                         <p>Thêm mới</p>
                       </a>
                     </li>
@@ -91,7 +91,7 @@
                   <ul class="nav nav-treeview">
                       <li class="nav-item">
                         <a href="{{ route('Country.index') }}" class="nav-link">
-                          <i class="fa-solid fa-bars-staggered pl-1 pr-2"></i>
+                          <i class="far fa-circle nav-icon"></i>
                           <p>Danh sách</p>
                         </a>
                       </li>
@@ -108,7 +108,7 @@
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
                       <a href="{{ route('Episode.create') }}" class="nav-link">
-                        <i class="fa-solid fa-pen-to-square pl-1 pr-2"></i>
+                        <i class="far fa-circle nav-icon"></i>
                         <p>Thêm mới</p>
                       </a>
                     </li>
@@ -116,7 +116,7 @@
                   <ul class="nav nav-treeview">
                       <li class="nav-item">
                         <a href="{{ route('Episode.index') }}" class="nav-link">
-                          <i class="fa-solid fa-bars-staggered pl-1 pr-2"></i>
+                          <i class="far fa-circle nav-icon"></i>
                           <p>Danh sách</p>
                         </a>
                       </li>
@@ -133,7 +133,7 @@
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
                       <a href="{{ route('Movie.create') }}" class="nav-link">
-                        <i class="fa-solid fa-pen-to-square pl-1 pr-2"></i>
+                        <i class="far fa-circle nav-icon"></i>
                         <p>Thêm mới</p>
                       </a>
                     </li>
@@ -141,7 +141,7 @@
                   <ul class="nav nav-treeview">
                       <li class="nav-item">
                         <a href="{{ route('Movie.index') }}" class="nav-link">
-                          <i class="fa-solid fa-bars-staggered pl-1 pr-2"></i>
+                          <i class="far fa-circle nav-icon"></i>
                           <p>Danh sách</p>
                         </a>
                       </li>

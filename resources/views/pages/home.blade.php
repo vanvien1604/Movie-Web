@@ -79,7 +79,16 @@
                   <div class="halim-item">
                      <a class="halim-thumb" href="{{ route('movie',$Mov->slug) }}">
                         <figure><img class="lazy img-responsive" src="{{ asset('backend/uploads/Movies/'.$Mov->image) }}" alt="BẠN CÙNG PHÒNG CỦA TÔI LÀ GUMIHO" title="BẠN CÙNG PHÒNG CỦA TÔI LÀ GUMIHO"></figure>
-                        <span class="status">TẬP 1/{{ $Mov->sotap }}</span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span> 
+                        @foreach ($Episodes->where('movie_id', $Mov->id) as $epi)
+                           <span class="status">TẬP {{ $epi->episode }}/{{ $epi->Movie->sotap }}</span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>            
+                              @if($epi->Movie->ngon_ngu==0)
+                              <span class="text">Vietsub</span>
+                              @elseif($epi->Movie->ngon_ngu == 1)
+                              <span class="text">Thuyết minh</span>
+                              @else
+                              <span class="text">Tiếng việt</span>
+                              @endif</span> 
+                        @endforeach
                         <div class="icon_overlay"></div>
                         <div class="halim-post-title-box">
                            <div class="halim-post-title ">

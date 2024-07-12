@@ -42,6 +42,14 @@
           <input type="text" name="sotap" class="form-control" id="exampleInputPassword1" value="{{ $Movies->sotap }}" placeholder="...">
         </div>
         <div class="form-group">
+          <label for="exampleSelect1">Phụ đề</label>
+          <select class="form-control" id="exampleSelect1" name="ngon_ngu">
+            <option value="0">Vietsub</option>
+            <option value="1">Thuyết minh</option>
+            <option value="2">Tiếng việt</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="exampleSelect1">Trạng thái</label>
           <select class="form-control" id="exampleSelect1" name="status">
             <option value="1">Hiển thị</option>

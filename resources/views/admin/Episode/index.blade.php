@@ -30,7 +30,7 @@
           <td scope="row">{{ $key }}</td>
           <td>{{ $cate_phim->Movie->title }}</td>
           <td><img src="{{ asset('backend/uploads/Movies/'.$cate_phim->Movie->image) }}" width="80px" height="100px" alt=""></td>
-          <td>{{ $cate_phim->linkphim }}</td>
+          <td class="iframe_phimAD">{!! $cate_phim->linkphim !!}</td>
           <td>{{ $cate_phim->episode }}</td>
           <td>
             <div class="btn-group">

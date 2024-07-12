@@ -20,11 +20,16 @@
    <main id="main-contents" class="col-xs-12 col-sm-12 col-md-8">
       <section id="content" class="test">
          <div class="clearfix wrap-content">
-            
-            @foreach ($Movie->episode as $link)
-                {!! $link->linkphim !!}
-            @endforeach
-            
+            <style type="text/css">
+               .iframe_phim iframe{
+                  width: 100%;
+                  height: 500px;
+               }
+            </style>
+            <div class="iframe_phim">
+               {!! $Episode->linkphim !!}
+            </div>
+
             <div class="button-watch">
                <ul class="halim-social-plugin col-xs-4 hidden-xs">
                   <li class="fb-like" data-href="" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></li>
@@ -77,14 +82,24 @@
             </div>
             <div id="halim-list-server">
                <ul class="nav nav-tabs" role="tablist">
-                  <li role="presentation" class="active server-1"><a href="#server-0" aria-controls="server-0" role="tab" data-toggle="tab"><i class="hl-server"></i> Vietsub</a></li>
+                  <li role="presentation" class="active server-1"><a href="#server-0" aria-controls="server-0" role="tab" data-toggle="tab"><i class="hl-server"></i>
+                     @if($Movie->ngon_ngu==0)
+                     Vietsub
+                     @elseif($Movie->ngon_ngu == 1)
+                     Thuyết minh
+                     @else
+                     Tiếng việt
+                     @endif
+                  </a></li>
                </ul>
                <div class="tab-content">
                   <div role="tabpanel" class="tab-pane active server-1" id="server-0">
                      <div class="halim-server">
                         <ul class="halim-list-eps">
-                           <a href="#"><li class="halim-episode"><span class="halim-btn halim-btn-2 active halim-info-1-1 box-shadow" data-post-id="37976" data-server="1" data-episode="1" data-position="first" data-embed="0" data-title="Xem phim Tôi Và Chúng Ta Ở Bên Nhau - Tập 1 - Be Together - vietsub + Thuyết Minh" data-h1="Tôi Và Chúng Ta Ở Bên Nhau - tập 1">1</span></li></a>
-                           <a href="#"><li class="halim-episode"><span class="halim-btn halim-btn-2 active halim-info-1-1 box-shadow" data-post-id="37976" data-server="1" data-episode="1" data-position="first" data-embed="0" data-title="Xem phim Tôi Và Chúng Ta Ở Bên Nhau - Tập 1 - Be Together - vietsub + Thuyết Minh" data-h1="Tôi Và Chúng Ta Ở Bên Nhau - tập 1">2</span></li></a>
+                           @foreach ($Movie->episode as $key => $sotap) 
+                           <a href="{{ url('xem-phim/'.$Movie->slug.'/tap-'.$sotap->episode) }}"><li class="halim-episode"><span class="halim-btn halim-btn-2 {{ $tapphim==$sotap->episode ? 'active' : '' }} halim-info-1-1 box-shadow" data-post-id="37976" data-server="1" data-episode="1" data-position="first" data-embed="0" data-title="{{ $Movie->title }} - Tập {{ $sotap->episode }} - Be Together - vietsub + Thuyết Minh" data-h1="{{ $Movie->title }} - tập {{ $sotap->episode }}">{{ $sotap->episode }}</span></li></a>
+                           @endforeach
+                           
                         </ul>
                         <div class="clearfix"></div>
                      </div>

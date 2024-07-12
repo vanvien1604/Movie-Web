@@ -22,6 +22,7 @@
           <div class="form-group">
               <label for="exampleSelect1">Chọn phim</label>
               <select class="form-control select-movie" id="exampleSelect1" name="movie_id">
+                  <option value="">--- chọn phim ---</option>
                   @foreach ($list_movie as $key => $list_mov)
                       <option value="{{ $list_mov->id }}">{{ $list_mov->title }}</option>
                   @endforeach

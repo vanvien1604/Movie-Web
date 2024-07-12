@@ -9,6 +9,6 @@ class Episode extends Model
 {
     use HasFactory;
     public function Movie(){
-        return $this->belongsTo(Movie::class,'movie_id');
+        return $this->belongsTo(Movie::class);
     }
 }

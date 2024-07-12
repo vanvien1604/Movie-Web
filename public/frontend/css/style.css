@@ -771,10 +771,20 @@ button.navbar-toggle.collapsed {
     font-size: 16px;
     line-height: 11px;
     display: block;
+    color: #ffed4d;
     margin: 13px 0 10px;
     position: relative;
     text-transform: uppercase;
     border-top: 1px solid #1d2731;
+}
+.section-titlefooter {
+    font-size: 18px;
+    line-height: 11px;
+    display: block;
+    color: #ffed4d;
+    margin: 13px 0 13px;
+    position: relative;
+    text-transform: uppercase;
 }
 .section-title span {
     position: relative;
