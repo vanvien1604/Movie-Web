@@ -2508,8 +2508,31 @@ tr.title {
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
+    font-size: 0;
     -ms-user-select: none;
     user-select: none;
+}
+.owl-prev::before, .owl-next::before {
+    font-family: FontAwesome;
+    font-size: 15px;
+    color: #333;
+    display: inline-block;
+}
+
+.owl-prev {
+    left: -25px; /* Điều chỉnh vị trí nút "Prev" */
+}
+
+.owl-prev::before {
+    content: "\f053"; /* Biểu tượng mũi tên trái từ FontAwesome 4.2 */
+}
+
+.owl-next {
+    right: -25px; /* Điều chỉnh vị trí nút "Next" */
+}
+
+.owl-next::before {
+    content: "\f054"; /* Biểu tượng mũi tên phải từ FontAwesome 4.2 */
 }
 .owl-carousel.owl-loading {
     opacity: 0;
@@ -2645,12 +2668,7 @@ tr.title {
     left: 0;
     right: 0;
 }
-.owl-carousel .owl-nav .owl-prev {
-    left: 30px;
-}
-.owl-carousel .owl-nav .owl-next {
-    right: 30px;
-}
+
 @media (max-width: 767px) {
     .owl-carousel-fullwidth .owl-nav .owl-prev {
         left: 7px;

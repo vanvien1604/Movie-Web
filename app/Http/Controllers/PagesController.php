@@ -14,7 +14,7 @@ class PagesController extends Controller
 {
     public function index(){
         $Categories = Category::orderBy('id', 'DESC')->where('status',1)->get();
-        $phimhot = Movie::where('phim_thinh_hanh',1)->get();
+        $phimhot = Movie::where('phim_thinh_hanh',1)->take(5)->get();
         $Genres = Genre::orderBy('id', 'DESC')->get();
         $Countries = Country::orderBy('id', 'DESC')->get();
         $Episodes = Episode::with('Movie')->orderBy('episode', 'DESC')->get();

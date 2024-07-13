@@ -44,13 +44,21 @@
          <div class="section-bar clearfix">
             <h3 class="section-title"><span>Phim Thịnh Hành</span></h3>
          </div>
-         <div id="halim_related_movies-2" class="owl-carousel owl-theme related-film">
+         <div id="halim_related_movies-2" class="owl-carousel owl-theme related-film" data-items="5">
             @foreach ($phimhot as $key => $hot)
                <article class="thumb grid-item post-38498">
                   <div class="halim-item">
                      <a class="halim-thumb" href="{{ route('movie',$hot->slug) }}" title="{{ $hot->title }}">
                         <figure><img class="lazy img-responsive" src=" {{ asset('backend/uploads/Movies/'.$hot->image) }} " alt="Đại Thánh Vô Song" title="{{ $hot->title }}"></figure>
-                        <span class="status">HD</span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span> 
+                        <span class="status">HD</span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>
+                           @if($hot->ngon_ngu==0)
+                              <span class="text">Vietsub</span>
+                              @elseif($hot->ngon_ngu == 1)
+                              <span class="text">Thuyết minh</span>
+                              @else
+                              <span class="text">Tiếng việt</span>
+                           @endif
+                        </span> 
                         <div class="icon_overlay"></div>
                         <div class="halim-post-title-box">
                            <div class="halim-post-title ">
