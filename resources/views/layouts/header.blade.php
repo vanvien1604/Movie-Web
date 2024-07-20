@@ -51,10 +51,10 @@
                <div class="col-md-5 col-sm-6 halim-search-form hidden-xs">
                   <div class="header-nav">
                      <div class="col-xs-12">
-                        <form id="search-form-pc" name="halimForm" role="search" action="" method="GET">
+                        <form id="search-form-pc" name="halimForm" role="search" action="{{ route('homepage') }}" method="GET">
                            <div class="form-group">
                               <div class="input-group col-xs-12">
-                                 <input id="search" type="text" name="s" class="form-control" placeholder="Tìm kiếm..." autocomplete="off" required>
+                                 <input id="search" type="text" name="search" class="form-control" placeholder="Tìm kiếm..." autocomplete="off" required>
                                  <i class="animate-spin hl-spin4 hidden"></i>
                               </div>
                            </div>

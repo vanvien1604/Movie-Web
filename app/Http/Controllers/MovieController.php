@@ -42,6 +42,7 @@ class MovieController extends Controller
             $Movies->title = $data['title'];
             $Movies->description = $data['description'];
             $Movies->sotap = $data['sotap'];
+            $Movies->chatluong = $data['chatluong'];
             $Movies->ngon_ngu = $data['ngon_ngu'];
             $Movies->thuocphim = $data['thuocphim'];
             $Movies->status = $data['status'];
@@ -95,6 +96,7 @@ class MovieController extends Controller
         $Movies->title = $data['title'];
         $Movies->description = $data['description'];
         $Movies->sotap = $data['sotap'];
+        $Movies->chatluong = $data['chatluong'];
         $Movies->ngon_ngu = $data['ngon_ngu'];
         $Movies->thuocphim = $data['thuocphim'];
         $Movies->status = $data['status'];

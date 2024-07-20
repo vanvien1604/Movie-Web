@@ -40,6 +40,16 @@
           <input type="text" name="sotap" class="form-control" id="exampleInputPassword1" placeholder="...">
         </div>
         <div class="form-group">
+          <label for="exampleSelect1">Đồ họa</label>
+          <select class="form-control" id="exampleSelect1" name="chatluong">
+            <option value="0">HD</option>
+            <option value="1">FullHD</option>
+            <option value="2">HDCam</option>
+            <option value="3">Cam</option>
+            <option value="4">SD</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="exampleSelect1">Phụ đề</label>
           <select class="form-control" id="exampleSelect1" name="ngon_ngu">
             <option value="0">Vietsub</option>

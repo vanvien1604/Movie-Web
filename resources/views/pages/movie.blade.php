@@ -45,7 +45,19 @@
                         <h1 class="movie-title title-1" style="display:block;line-height:35px;margin-bottom: -14px;color: #ffed4d;text-transform: uppercase;font-size: 18px;">{{ $Movie->title }}</h1>
                         <h2 class="movie-title title-2" style="font-size: 12px;">Black Widow (2021)</h2>
                         <ul class="list-info-group">
-                           <li class="list-info-group-item"><span>Trạng Thái</span> : <span class="quality">HD</span><span class="episode">
+                           <li class="list-info-group-item"><span>Trạng Thái</span> : <span class="quality">
+                              @if($Movie->chatluong == 0)
+                              <span class="text">HD</span>
+                              @elseif($Movie->chatluong == 1)
+                              <span class="text">FullHD</span>
+                              @elseif($Movie->chatluong == 2)
+                              <span class="text">HDCam</span>
+                              @elseif($Movie->chatluong == 3)
+                              <span class="text">Cam</span>
+                              @else
+                              <span class="text">SD</span>
+                              @endif   
+                           </span><span class="episode">
                               @if($Movie->ngon_ngu==0)
                               <span class="text">Vietsub</span>
                               @elseif($Movie->ngon_ngu == 1)
@@ -138,7 +150,7 @@
             </div>
          </section>
       </main>
-      <aside id="sidebar" class="col-xs-12 col-sm-12 col-md-4"></aside>
+      @include('pages.include.sidebar')
    </div>
 </div>
 <div class="clearfix"></div>

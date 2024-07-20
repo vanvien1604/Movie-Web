@@ -12,42 +12,50 @@ use DB;
 
 class PagesController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+        $tk = $request->input('search');
+        $Search = Movie::with('episode')->where('title', 'LIKE', '%'.$tk.'%' )->get();
+
         $Categories = Category::orderBy('id', 'DESC')->where('status',1)->get();
-        $phimhot = Movie::with('episode')->where('phim_thinh_hanh',1)->take(5)->get();
+        $phimhot = Movie::with('episode')->where('phim_thinh_hanh',1)->orderBy('id','DESC')->take(5)->get();
+        $phimhot_sidebar = Movie::where('phim_thinh_hanh',1)->orderBy('id','DESC')->take(20)->get();
         $Genres = Genre::orderBy('id', 'DESC')->get();
         $Countries = Country::orderBy('id', 'DESC')->get();
         $Episodes = Episode::with('Movie')->orderBy('episode', 'DESC')->get();
         $Categories_home = Category::with('Movie')->orderBy('id', 'DESC')->where('status',1)->get();
-        return view('pages.home', compact('Categories','Genres','Countries','Categories_home', 'phimhot', 'Episodes'));
+        return view('pages.home', compact('Categories','Genres','Countries','Categories_home', 'phimhot', 'Episodes', 'phimhot_sidebar', 'Search', 'tk'));
     }
     public function category($slug){
+        $phimhot_sidebar = Movie::where('phim_thinh_hanh',1)->orderBy('id','DESC')->take(20)->get();
         $Categories = Category::orderBy('id', 'DESC')->where('status',1)->get();
         $Genres = Genre::orderBy('id', 'DESC')->get();
         $Countries = Country::orderBy('id', 'DESC')->get();
         $cate_slug = Category::where('slug',$slug)->first();
-        $Movie = Movie::where('category_id', $cate_slug->id)->paginate(10);
-        return view('pages.category', compact('Categories','Genres','Countries','cate_slug','Movie'));
+        $Movie = Movie::with('episode')->where('category_id', $cate_slug->id)->paginate(12);
+        return view('pages.category', compact('Categories','Genres','Countries','cate_slug','Movie','phimhot_sidebar'));
     }
     public function genre($slug){
+        $phimhot_sidebar = Movie::where('phim_thinh_hanh',1)->orderBy('id','DESC')->take(20)->get();
         $Categories = Category::orderBy('id', 'DESC')->where('status',1)->get();
         $Genres = Genre::orderBy('id', 'DESC')->get();
         $Countries = Country::orderBy('id', 'DESC')->get();
         $tl_slug = Genre::where('slug',$slug)->first();
-        $Movie = Movie::where('genre_id', $tl_slug->id)->paginate(5);
-        return view('pages.genre', compact('Categories','Genres','Countries','tl_slug','Movie'));
+        $Movie = Movie::with('episode')->where('genre_id', $tl_slug->id)->paginate(12);
+        return view('pages.genre', compact('Categories','Genres','Countries','tl_slug','Movie','phimhot_sidebar'));
     }
     public function country($slug){
+        $phimhot_sidebar = Movie::where('phim_thinh_hanh',1)->orderBy('id','DESC')->take(20)->get();
         $Categories = Category::orderBy('id', 'DESC')->where('status',1)->get();
         $Genres = Genre::orderBy('id', 'DESC')->get();
         $Countries = Country::orderBy('id', 'DESC')->get();
         $qg_slug = Country::where('slug',$slug)->first();
-        $Movie = Movie::where('country_id', $qg_slug->id)->paginate(5);
+        $Movie = Movie::with('episode')->where('country_id', $qg_slug->id)->paginate(12);
         
-        return view('pages.country', compact('Categories','Genres','Countries','qg_slug','Movie'));
+        return view('pages.country', compact('Categories','Genres','Countries','qg_slug','Movie','phimhot_sidebar'));
     }
     public function movie($slug)
     {
+        $phimhot_sidebar = Movie::where('phim_thinh_hanh',1)->orderBy('id','DESC')->take(20)->get();
         $Categories = Category::orderBy('id', 'DESC')->where('status', 1)->get();
         $Genres = Genre::orderBy('id', 'DESC')->get();
         $Countries = Country::orderBy('id', 'DESC')->get();
@@ -61,7 +69,7 @@ class PagesController extends Controller
             ->where('category_id', $Movie->Category->id)
             ->orderBy(DB::raw('RAND()'))
             ->get();
-        return view('pages.movie', compact('Categories', 'Genres', 'Countries', 'Movie', 'Movielq', 'episode_tapdau', 'episode_current_list_count'));
+        return view('pages.movie', compact('Categories', 'Genres', 'Countries', 'Movie', 'Movielq', 'episode_tapdau', 'episode_current_list_count','phimhot_sidebar'));
     }
     public function watch($slug,$tap){
         if(isset($tap)){
@@ -70,6 +78,7 @@ class PagesController extends Controller
             $tapphim = 1;
         }
         $tapphim = substr($tap, 4,20);
+        $phimhot_sidebar = Movie::where('phim_thinh_hanh',1)->orderBy('id','DESC')->take(20)->get();
         $Categories = Category::orderBy('id', 'DESC')->where('status',1)->get();
         $Genres = Genre::orderBy('id', 'DESC')->get();
         $Countries = Country::orderBy('id', 'DESC')->get();
@@ -79,7 +88,7 @@ class PagesController extends Controller
             ->where('category_id', $Movie->Category->id)
             ->orderBy(DB::raw('RAND()'))
             ->get();
-        return view('pages.watch', compact('Categories','Genres','Countries','Movie','Movielq','Episode', 'tapphim'));
+        return view('pages.watch', compact('Categories','Genres','Countries','Movie','Movielq','Episode', 'tapphim','phimhot_sidebar'));
     }
     public function episode(){
         return view('pages.episode');
