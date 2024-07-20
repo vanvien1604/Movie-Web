@@ -64,7 +64,7 @@
                   </div>
                </div>
                <div class="col-md-4 hidden-xs">
-                  <div id="get-bookmark" class="box-shadow"><i class="fa-solid fa-bookmark"></i><span> Bookmarks</span><span class="count">0</span></div>
+                  <div id="get-bookmark" class="box-shadow"><i class="fa-solid fa-bookmark"></i><span style="margin-left: 5px"> Bookmarks</span><span class="count">0</span></div>
                   <div id="bookmark-list" class="hidden bookmark-list-on-pc">
                      <ul style="margin: 0;"></ul>
                   </div>

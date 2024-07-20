@@ -43,6 +43,7 @@ class MovieController extends Controller
             $Movies->description = $data['description'];
             $Movies->sotap = $data['sotap'];
             $Movies->ngon_ngu = $data['ngon_ngu'];
+            $Movies->thuocphim = $data['thuocphim'];
             $Movies->status = $data['status'];
             $Movies->slug = Str::slug($data['title']);
             $Movies->category_id = $data['category_id'];
@@ -95,6 +96,7 @@ class MovieController extends Controller
         $Movies->description = $data['description'];
         $Movies->sotap = $data['sotap'];
         $Movies->ngon_ngu = $data['ngon_ngu'];
+        $Movies->thuocphim = $data['thuocphim'];
         $Movies->status = $data['status'];
         $Movies->slug = Str::slug($data['title']);
         $Movies->category_id = $data['category_id'];

@@ -14,7 +14,7 @@ class PagesController extends Controller
 {
     public function index(){
         $Categories = Category::orderBy('id', 'DESC')->where('status',1)->get();
-        $phimhot = Movie::where('phim_thinh_hanh',1)->take(5)->get();
+        $phimhot = Movie::with('episode')->where('phim_thinh_hanh',1)->take(5)->get();
         $Genres = Genre::orderBy('id', 'DESC')->get();
         $Countries = Country::orderBy('id', 'DESC')->get();
         $Episodes = Episode::with('Movie')->orderBy('episode', 'DESC')->get();
@@ -53,11 +53,15 @@ class PagesController extends Controller
         $Countries = Country::orderBy('id', 'DESC')->get();
         $Movie = Movie::with('Category', 'Genre', 'Country')->where('slug', $slug)->orderBy('id', 'DESC')->where('status', 1)->first();
         $episode_tapdau = Episode::with('Movie')->where('movie_id',$Movie->id)->orderBy('episode', 'ASC')->take(1)->first();
+        // lấy tổng tập phim
+        $episode_current_list = Episode::with('Movie')->where('movie_id',$Movie->id)->get();
+        $episode_current_list_count = $episode_current_list->count();
+
         $Movielq = Movie::with('Category', 'Genre', 'Country')
             ->where('category_id', $Movie->Category->id)
             ->orderBy(DB::raw('RAND()'))
             ->get();
-        return view('pages.movie', compact('Categories', 'Genres', 'Countries', 'Movie', 'Movielq', 'episode_tapdau'));
+        return view('pages.movie', compact('Categories', 'Genres', 'Countries', 'Movie', 'Movielq', 'episode_tapdau', 'episode_current_list_count'));
     }
     public function watch($slug,$tap){
         if(isset($tap)){
@@ -65,7 +69,7 @@ class PagesController extends Controller
         }else{
             $tapphim = 1;
         }
-        $tapphim = substr($tap, 4,1);
+        $tapphim = substr($tap, 4,20);
         $Categories = Category::orderBy('id', 'DESC')->where('status',1)->get();
         $Genres = Genre::orderBy('id', 'DESC')->get();
         $Countries = Country::orderBy('id', 'DESC')->get();

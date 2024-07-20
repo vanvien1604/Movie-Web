@@ -95,8 +95,13 @@ class EpisodeController extends Controller
     $Movie = Movie::find($id);
     if ($Movie) {
         $output = '<option>--- chọn tập phim ---</option>';
-        for ($i = 1; $i <= $Movie->sotap; $i++) {
-            $output .= '<option value="'.$i.'">'.$i.'</option>';
+        if ($Movie->thuocphim == 'phimbo') {
+            for ($i = 1; $i <= $Movie->sotap; $i++) {
+                $output .= '<option value="'.$i.'">'.$i.'</option>';
+            }
+        } else {
+            $output .= '<option value="HD">HD</option>
+            <option value="FullHD">FullHD</option>';
         }
     } else {
         $output = '<option>Không tìm thấy phim</option>';

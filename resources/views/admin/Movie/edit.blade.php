@@ -50,6 +50,13 @@
           </select>
         </div>
         <div class="form-group">
+          <label for="exampleSelect1">Thuộc phim</label>
+          <select class="form-control" id="exampleSelect1" name="thoucphim">
+            <option value="phimbo">Phim bộ</option>
+            <option value="phimle">Phim lẻ</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="exampleSelect1">Trạng thái</label>
           <select class="form-control" id="exampleSelect1" name="status">
             <option value="1">Hiển thị</option>

@@ -64,13 +64,8 @@
             <div class="clearfix"></div>
             <div class="clearfix"></div>
             <div class="title-block">
-               <a href="javascript:;" data-toggle="tooltip" title="Add to bookmark">
-                  <div id="bookmark" class="bookmark-img-animation primary_ribbon" data-id="37976">
-                     <div class="halim-pulse-ring"></div>
-                  </div>
-               </a>
                <div class="title-wrapper-xem full">
-                  <h1 class="entry-title"><a href="" title="Tôi Và Chúng Ta Ở Bên Nhau" class="tl">{{ $Movie->title }}</a></h1>
+                  <h1 class="entry-title" style="width: 700px; "><a href="" title="{{ $Movie->title }}" class="tl">{{ $Movie->title }}</a></h1>
                </div>
             </div>
             <div class="entry-content htmlwrap clearfix collapse" id="expand-post-content">

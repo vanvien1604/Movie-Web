@@ -40,18 +40,25 @@
           <input type="text" name="sotap" class="form-control" id="exampleInputPassword1" placeholder="...">
         </div>
         <div class="form-group">
-          <label for="exampleSelect1">Trạng thái</label>
-          <select class="form-control" id="exampleSelect1" name="status">
-            <option value="1">Hiển thị</option>
-            <option value="0">Không hiển thị</option>
-          </select>
-        </div>
-        <div class="form-group">
           <label for="exampleSelect1">Phụ đề</label>
           <select class="form-control" id="exampleSelect1" name="ngon_ngu">
             <option value="0">Vietsub</option>
             <option value="1">Thuyết minh</option>
             <option value="2">Tiếng việt</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleSelect1">Thuộc phim</label>
+          <select class="form-control" id="exampleSelect1" name="thuocphim">
+            <option value="phimbo">Phim bộ</option>
+            <option value="phimle">Phim lẻ</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleSelect1">Trạng thái</label>
+          <select class="form-control" id="exampleSelect1" name="status">
+            <option value="1">Hiển thị</option>
+            <option value="0">Không hiển thị</option>
           </select>
         </div>
         <div class="form-group">

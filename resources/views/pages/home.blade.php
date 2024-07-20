@@ -50,7 +50,13 @@
                   <div class="halim-item">
                      <a class="halim-thumb" href="{{ route('movie',$hot->slug) }}" title="{{ $hot->title }}">
                         <figure><img class="lazy img-responsive" src=" {{ asset('backend/uploads/Movies/'.$hot->image) }} " alt="Đại Thánh Vô Song" title="{{ $hot->title }}"></figure>
-                        <span class="status">HD</span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>
+                        <span class="status">TẬP
+                           @if ($hot->thuocphim == 'phimbo')
+                                 {{ $hot->episode->first()->episode }}/{{ $hot->sotap }} 
+                              @else
+                                 {{ $hot->episode->first()->episode }}
+                              @endif
+                        </span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>
                            @if($hot->ngon_ngu==0)
                               <span class="text">Vietsub</span>
                               @elseif($hot->ngon_ngu == 1)
@@ -88,7 +94,13 @@
                      <a class="halim-thumb" href="{{ route('movie',$Mov->slug) }}">
                         <figure><img class="lazy img-responsive" src="{{ asset('backend/uploads/Movies/'.$Mov->image) }}" alt="BẠN CÙNG PHÒNG CỦA TÔI LÀ GUMIHO" title="BẠN CÙNG PHÒNG CỦA TÔI LÀ GUMIHO"></figure>
                         @foreach ($Episodes->where('movie_id', $Mov->id) as $epi)
-                           <span class="status">TẬP {{ $epi->episode }}/{{ $epi->Movie->sotap }}</span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>            
+                           <span class="status">TẬP 
+                              @if ($epi->Movie->thuocphim == 'phimbo')
+                                 {{ $epi->episode }}/{{ $epi->Movie->sotap }} 
+                              @else
+                                 {{ $epi->episode }}
+                              @endif
+                              </span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>            
                               @if($epi->Movie->ngon_ngu==0)
                               <span class="text">Vietsub</span>
                               @elseif($epi->Movie->ngon_ngu == 1)

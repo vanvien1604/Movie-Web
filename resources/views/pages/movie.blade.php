@@ -1,6 +1,3 @@
-
-
-
 @extends('index')
 @section('content')
 <body>
@@ -28,9 +25,9 @@
                <div class="halim-movie-wrapper">
                   <div class="title-block">
                      <div id="bookmark" class="bookmark-img-animation primary_ribbon" data-id="38424">
-                        <div class="halim-pulse-ring"></div>
+                        <i class="fa-solid fa-bookmark"></i>
                      </div>
-                     <div class="title-wrapper" style="font-weight: bold;">
+                     <div class="title-wrapper" style="font-weight: bold; margin: 5px 0px 0px -5px;">
                         Bookmark
                      </div>
                   </div>
@@ -58,7 +55,19 @@
                               @endif</span>    
                            </span></li>
                            <li class="list-info-group-item"><span>Thời lượng</span> : 133 Phút</li>
-                           <li class="list-info-group-item"><span>Tập phim</span> : {{ $Movie->sotap }}</li>
+                           <li class="list-info-group-item"><span>Tập phim</span> : 
+                           @if ($Movie->thoucphim == 'phimbo')
+                              {{ $episode_current_list_count }}/{{ $Movie->sotap }} - 
+                              @if ($episode_current_list_count == $Movie->sotap)
+                                 Hoàn thành
+                              @else
+                                 Đang cập nhật
+                              @endif
+                           @else
+                               FullHD HD
+                           @endif   
+                           
+                           </li>
                            <li class="list-info-group-item"><span>Thể loại</span> : <a href="" rel="category tag">{{ $Movie->Genre->title }}</a></li>
                            <li class="list-info-group-item"><span>Quốc gia</span> : <a href="" rel="tag">{{ $Movie->Country->title }}</a></li>
                            <li class="list-info-group-item"><span>Đạo diễn</span> : <a class="director" rel="nofollow" href="https://phimhay.co/dao-dien/cate-shortland" title="Cate Shortland">Cate Shortland</a></li>

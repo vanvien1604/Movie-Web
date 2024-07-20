@@ -23,6 +23,7 @@
           {{-- <th scope="col">Slug</th> --}}
           <th scope="col">Số tập</th>
           <th scope="col">Phụ đề</th>
+          <th scope="col">Thuộc phim</th>
           <th scope="col">Trạng thái</th>
           <th scope="col">Danh mục</th>
           <th scope="col">Thể loại</th>
@@ -48,6 +49,13 @@
             <span class="text">Tiếng việt</span>
             @endif
         </td>
+        <td>
+          @if($cate_phim->thuocphim=='phimbo')
+          <span class="text">Phim bộ</span>
+          @else
+          <span class="text">Phim lẻ</span>
+          @endif
+      </td>
           <td>
               @if($cate_phim->status==1)
               <span class="text text-success">Hiển thị</span>

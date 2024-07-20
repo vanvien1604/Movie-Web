@@ -5401,7 +5401,6 @@ ul.list-info-group {
     width: 50%;
     display: inline-block;
     padding-bottom: 8px;
-    border-bottom: 1px solid #40474e;
 }
 @media (max-width: 700px) {
     .movie-title .title-1 {
