@@ -40,8 +40,8 @@
         <div class="form-group">
           <label for="exampleSelect1">Trạng thái</label>
           <select class="form-control" id="exampleSelect1" name="status">
-            <option value="1">Hiển thị</option>
-            <option value="0">Không hiển thị</option>
+            <option value="1" {{ old('status', $Countries->status) == 1 ? 'selected' : '' }}>Hiển thị</option>
+            <option value="0" {{ old('status', $Countries->status) == 0 ? 'selected' : '' }}>Không hiển thị</option>
           </select>
         </div>
       </div>

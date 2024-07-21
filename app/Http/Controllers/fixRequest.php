@@ -8,8 +8,7 @@ class fixRequest extends Controller
 {
     public function handle(Request $request)
     {
-        // Xử lý request ở đây
-        // Ví dụ:
+        // Xử lý request
         $data = $request->all();
         return response()->json($data);
     }

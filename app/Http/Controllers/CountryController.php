@@ -32,12 +32,11 @@ class CountryController extends Controller
     {
         $data = $request->validate([
             'title' => 'required|unique:categories|max:255',
-            'description' => 'required|max:255',
             'status' => 'required|boolean',
         ]);
         $Countries = new Country();
         $Countries->title = $data['title'];
-        $Countries->description = $data['description'];
+        $Countries->description = $data['description'] ?? '';
         $Countries->status = $data['status'];
         $Countries->slug = Str::slug($data['title']);
         toastr()->success('Thêm mới Thành Công !');
@@ -69,13 +68,12 @@ class CountryController extends Controller
     public function update(Request $request, string $id)
     {
         $data = $request->validate([
-            'title' => 'required|unique:categories|max:255',
-            'description' => 'required|max:255',
+            'title' => 'required|max:255',
             'status' => 'required|boolean',
         ]);
         $Countries = Country::find($id);
         $Countries->title = $data['title'];
-        $Countries->description = $data['description'];
+        $Countries->description = $data['description'] ?? '';
         $Countries->status = $data['status'];
         $Countries->slug = Str::slug($data['title']);
         toastr()->success('Cập nhật Thành Công !');

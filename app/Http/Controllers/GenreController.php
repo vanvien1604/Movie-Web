@@ -32,12 +32,11 @@ class GenreController extends Controller
     {
         $data = $request->validate([
             'title' => 'required|unique:categories|max:255',
-            'description' => 'required|max:255',
             'status' => 'required|boolean',
         ]);
         $Genres = new Genre();
         $Genres->title = $data['title'];
-        $Genres->description = $data['description'];
+        $Genres->description = $data['description'] ?? '';
         $Genres->status = $data['status'];
         $Genres->slug = Str::slug($data['title']);
         toastr()->success('Thêm mới Thành Công !');
@@ -69,13 +68,12 @@ class GenreController extends Controller
     public function update(Request $request, string $id)
     {
         $data = $request->validate([
-            'title' => 'required|unique:categories|max:255',
-            'description' => 'required|max:255',
+            'title' => 'required|max:255',
             'status' => 'required|boolean',
         ]);
         $Genres = Genre::find($id);
         $Genres->title = $data['title'];
-        $Genres->description = $data['description'];
+        $Genres->description = $data['description'] ?? '';
         $Genres->status = $data['status'];
         $Genres->slug = Str::slug($data['title']);
         toastr()->success('Cập nhật Thành Công !');

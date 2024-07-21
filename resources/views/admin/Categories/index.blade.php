@@ -31,8 +31,6 @@
             <th scope="row">{{ $key }}</th>
             <td>{{ $cate->title }}</td>
             <td>{{ $cate->description }}</td>
-            {{-- <td><img width="80px" height="80px" src="{{ asset('uploads/categories/'.$cate->image) }}" alt=""></td>
-            <td>{{ $cate->slug }}</td> --}}
             <td>
                 @if($cate->status==1)
                 <span class="text text-success">Hiển thị</span>

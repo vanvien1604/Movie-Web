@@ -15,93 +15,93 @@
     @endif
     <!-- /.card-header -->
     <!-- form start -->
-    <form method="POST" action="{{ route('Movie.update',[$Movies->id]) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('Movie.update', [$Movies->id]) }}" enctype="multipart/form-data">
         @method('PUT')
         @csrf
       <div class="card-body">
         <div class="form-group">
-          <label for="exampleInputEmail1">Tên phim</label>
-          <input type="name" name="title" class="form-control" id="exampleInputEmail1" value="{{ $Movies->title }}" placeholder="...">
+          <label for="title">Tên phim</label>
+          <input type="text" name="title" class="form-control" id="title" value="{{ old('title', $Movies->title) }}" placeholder="...">
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Mô tả</label>
-          <input type="text" name="description" class="form-control" id="exampleInputPassword1" value="{{ $Movies->description }}" placeholder="...">
+          <label for="description">Mô tả</label>
+          <input type="text" name="description" class="form-control" id="description" value="{{ old('description', $Movies->description) }}" placeholder="...">
         </div>
         <div class="form-group">
-          <label for="exampleInputFile">File image</label>
+          <label for="image">File image</label>
           <div class="input-group">
             <div class="custom-file">
-              <input type="file" name="image" class="form-control-file" id="exampleInputFile">
-              <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+              <input type="file" name="image" class="form-control-file" id="image">
+              <label class="custom-file-label" for="image">Choose file</label>
             </div>
             <img height="80px" width="80px" src="{{ asset('backend/uploads/Movies/'.$Movies->image) }}" alt="">
           </div>
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Số tập</label>
-          <input type="text" name="sotap" class="form-control" id="exampleInputPassword1" value="{{ $Movies->sotap }}" placeholder="...">
+          <label for="sotap">Số tập</label>
+          <input type="text" name="sotap" class="form-control" id="sotap" value="{{ old('sotap', $Movies->sotap) }}" placeholder="...">
         </div>
         <div class="form-group">
-          <label for="exampleSelect1">Đồ họa</label>
-          <select class="form-control" id="exampleSelect1" name="chatluong">
-            <option value="0">HD</option>
-            <option value="1">FullHD</option>
-            <option value="2">HDCam</option>
-            <option value="3">Cam</option>
-            <option value="4">SD</option>
+          <label for="chatluong">Đồ họa</label>
+          <select class="form-control" id="chatluong" name="chatluong">
+            <option value="0" {{ old('chatluong', $Movies->chatluong) == '0' ? 'selected' : '' }}>HD</option>
+            <option value="1" {{ old('chatluong', $Movies->chatluong) == '1' ? 'selected' : '' }}>FullHD</option>
+            <option value="2" {{ old('chatluong', $Movies->chatluong) == '2' ? 'selected' : '' }}>HDCam</option>
+            <option value="3" {{ old('chatluong', $Movies->chatluong) == '3' ? 'selected' : '' }}>Cam</option>
+            <option value="4" {{ old('chatluong', $Movies->chatluong) == '4' ? 'selected' : '' }}>SD</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="exampleSelect1">Phụ đề</label>
-          <select class="form-control" id="exampleSelect1" name="ngon_ngu">
-            <option value="0">Vietsub</option>
-            <option value="1">Thuyết minh</option>
-            <option value="2">Tiếng việt</option>
+          <label for="ngon_ngu">Phụ đề</label>
+          <select class="form-control" id="ngon_ngu" name="ngon_ngu">
+            <option value="0" {{ old('ngon_ngu', $Movies->ngon_ngu) == '0' ? 'selected' : '' }}>Vietsub</option>
+            <option value="1" {{ old('ngon_ngu', $Movies->ngon_ngu) == '1' ? 'selected' : '' }}>Thuyết minh</option>
+            <option value="2" {{ old('ngon_ngu', $Movies->ngon_ngu) == '2' ? 'selected' : '' }}>Tiếng việt</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="exampleSelect1">Thuộc phim</label>
-          <select class="form-control" id="exampleSelect1" name="thoucphim">
-            <option value="phimbo">Phim bộ</option>
-            <option value="phimle">Phim lẻ</option>
+          <label for="thuocphim">Thuộc phim</label>
+          <select class="form-control" id="thuocphim" name="thuocphim">
+            <option value="phimbo" {{ old('thuocphim', $Movies->thuocphim) == 'phimbo' ? 'selected' : '' }}>Phim bộ</option>
+            <option value="phimle" {{ old('thuocphim', $Movies->thuocphim) == 'phimle' ? 'selected' : '' }}>Phim lẻ</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="exampleSelect1">Trạng thái</label>
-          <select class="form-control" id="exampleSelect1" name="status">
-            <option value="1">Hiển thị</option>
-            <option value="0">Không hiển thị</option>
+          <label for="status">Trạng thái</label>
+          <select class="form-control" id="status" name="status">
+            <option value="1" {{ old('status', $Movies->status) == '1' ? 'selected' : '' }}>Hiển thị</option>
+            <option value="0" {{ old('status', $Movies->status) == '0' ? 'selected' : '' }}>Không hiển thị</option>
           </select>
         </div>
         <div class="form-group">
-            <label for="exampleSelect1">Danh mục</label>
-            <select class="form-control" id="exampleSelect1" name="category_id">
+            <label for="category_id">Danh mục</label>
+            <select class="form-control" id="category_id" name="category_id">
               @foreach ($Category as $key => $view_dm)
-                <option value="{{ $view_dm->id }}">{{ $view_dm->title }}</option>
+                <option value="{{ $view_dm->id }}" {{ old('category_id', $Movies->category_id) == $view_dm->id ? 'selected' : '' }}>{{ $view_dm->title }}</option>
               @endforeach
             </select>
           </div>
           <div class="form-group">
-            <label for="exampleSelect1">Thể loại</label>
-            <select class="form-control" id="exampleSelect1" name="genre_id">
+            <label for="genre_id">Thể loại</label>
+            <select class="form-control" id="genre_id" name="genre_id">
                 @foreach ($Genres as $key => $view_tl)
-                <option value="{{ $view_tl->id }}">{{ $view_tl->title }}</option>
+                <option value="{{ $view_tl->id }}" {{ old('genre_id', $Movies->genre_id) == $view_tl->id ? 'selected' : '' }}>{{ $view_tl->title }}</option>
               @endforeach
             </select>
           </div>
           <div class="form-group">
-            <label for="exampleSelect1">Quốc gia</label>
-            <select class="form-control" id="exampleSelect1" name="country_id">
+            <label for="country_id">Quốc gia</label>
+            <select class="form-control" id="country_id" name="country_id">
                 @foreach ($Countries as $key => $view_qg)
-                <option value="{{ $view_qg->id }}">{{ $view_qg->title }}</option>
+                <option value="{{ $view_qg->id }}" {{ old('country_id', $Movies->country_id) == $view_qg->id ? 'selected' : '' }}>{{ $view_qg->title }}</option>
               @endforeach
             </select>
           </div>
           <div class="form-group">
-            <label for="exampleSelect1">Thịnh hành</label>
-            <select class="form-control" id="exampleSelect1" name="phim_thinh_hanh">
-              <option value="1">Có</option>
-              <option value="0">Không</option>
+            <label for="phim_thinh_hanh">Thịnh hành</label>
+            <select class="form-control" id="phim_thinh_hanh" name="phim_thinh_hanh">
+              <option value="1" {{ old('phim_thinh_hanh', $Movies->phim_thinh_hanh) == '1' ? 'selected' : '' }}>Có</option>
+              <option value="0" {{ old('phim_thinh_hanh', $Movies->phim_thinh_hanh) == '0' ? 'selected' : '' }}>Không</option>
             </select>
           </div>
       </div>

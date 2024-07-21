@@ -27,21 +27,11 @@
           <label for="exampleInputPassword1">Mô tả</label>
           <input type="text" name="description" class="form-control" value="{{ $Category->description }}" id="exampleInputPassword1" placeholder="Nhập dữ liệu...">
         </div>
-        {{-- <div class="form-group">
-          <label for="exampleInputFile">File image</label>
-          <div class="input-group">
-            <div class="custom-file">
-              <input type="file" name="image" class="form-control-file" id="exampleInputFile">
-              <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-            </div>
-            <img width="80px" height="80px" src="{{ asset('uploads/categories/'.$Category->image) }}" alt="">
-          </div>
-        </div> --}}
         <div class="form-group">
           <label for="exampleSelect1">Trạng thái</label>
           <select class="form-control" id="exampleSelect1" name="status">
-            <option value="1">Hiển thị</option>
-            <option value="0">Không hiển thị</option>
+            <option value="1" {{ old('status', $Category->status) == 1 ? 'selected' : '' }}>Hiển thị</option>
+            <option value="0" {{ old('status', $Category->status) == 0 ? 'selected' : '' }}>Không hiển thị</option>
           </select>
         </div>
       </div>
