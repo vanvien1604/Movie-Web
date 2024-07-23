@@ -22,14 +22,13 @@
          <div class="clearfix wrap-content">
             <style type="text/css">
                .iframe_phim iframe{
-                  width: 100%;
-                  height: 500px;
+               width: 100%;
+               height: 500px;
                }
             </style>
             <div class="iframe_phim">
                {!! $Episode->linkphim !!}
             </div>
-
             <div class="button-watch">
                <ul class="halim-social-plugin col-xs-4 hidden-xs">
                   <li class="fb-like" data-href="" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></li>
@@ -59,7 +58,6 @@
                   <div class="fb-save" data-uri="" data-size="small"></div>
                </ul>
             </div>
-         
             <div class="clearfix"></div>
             <div class="clearfix"></div>
             <div class="title-block">
@@ -84,14 +82,17 @@
                      @else
                      Tiếng việt
                      @endif
-                  </a></li>
+                     </a>
+                  </li>
                </ul>
                <div class="tab-content">
                   <div role="tabpanel" class="tab-pane active server-1" id="server-0">
                      <div class="halim-server">
                         <ul class="halim-list-eps">
                            @foreach ($Movie->episode as $key => $sotap) 
-                           <a href="{{ url('xem-phim/'.$Movie->slug.'/tap-'.$sotap->episode) }}"><li class="halim-episode"><span class="halim-btn halim-btn-2 {{ $tapphim==$sotap->episode ? 'active' : '' }} halim-info-1-1 box-shadow" data-post-id="37976" data-server="1" data-episode="1" data-position="first" data-embed="0" data-title="{{ $Movie->title }} - Tập {{ $sotap->episode }} - Be Together - vietsub + Thuyết Minh" data-h1="{{ $Movie->title }} - tập {{ $sotap->episode }}">{{ $sotap->episode }}</span></li></a>
+                           <a href="{{ url('xem-phim/'.$Movie->slug.'/tap-'.$sotap->episode) }}">
+                              <li class="halim-episode"><span class="halim-btn halim-btn-2 {{ $tapphim==$sotap->episode ? 'active' : '' }} halim-info-1-1 box-shadow" data-post-id="37976" data-server="1" data-episode="1" data-position="first" data-embed="0" data-title="{{ $Movie->title }} - Tập {{ $sotap->episode }} - Be Together - vietsub + Thuyết Minh" data-h1="{{ $Movie->title }} - tập {{ $sotap->episode }}">{{ $sotap->episode }}</span></li>
+                           </a>
                            @endforeach
                         </ul>
                         <div class="clearfix"></div>
@@ -99,9 +100,14 @@
                   </div>
                </div>
             </div>
-            <div class="clearfix"></div>
-            <div class="htmlwrap clearfix">
-               <div id="lightout"></div>
+            <div class="section-bar clearfix">
+               <h3 class="section-title"><span>Bình Luận</span></h3>
+            </div>
+            <div class="htmlwrap clearfix" style="background-color: white">
+               {{-- @php
+               $Request = Request::url();
+               @endphp --}}
+               <div class="fb-comments" data-href="http://localhost:8000/" data-width="100%" data-numposts="3" data-colorscheme="light"></div>
             </div>
       </section>
       <section class="related-movies">
@@ -110,30 +116,30 @@
       <h3 class="section-title"><span>CÓ THỂ BẠN MUỐN XEM</span></h3>
       </div>
       <div id="halim_related_movies-2" class="owl-carousel owl-theme related-film">
-         @foreach ($Movielq as $key => $Movie_lq)
-            <article class="thumb grid-item post-38494">
-               <div class="halim-item">
-               <a class="halim-thumb" href="{{ route('movie',$Movie_lq->slug) }}" title="Câu Chuyện Kinh Dị Cổ Điển">
-               <figure><img class="lazy img-responsive" src="{{ asset('backend/uploads/Movies/'.$Movie_lq->image) }}" alt="Câu Chuyện Kinh Dị Cổ Điển" title="Câu Chuyện Kinh Dị Cổ Điển"></figure>
-               <span class="status">HD</span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span> <div class="icon_overlay"></div>
-               <div class="halim-post-title-box">
-               <div class="halim-post-title ">
-               <p class="entry-title">{{ $Movie_lq->title }}</p><p class="original_title">A Classic Horror Story</p>
-               </div>
-               </div>
-               </a>
-               </div>
-            </article>
-         @endforeach
+      @foreach ($Movielq as $key => $Movie_lq)
+      <article class="thumb grid-item post-38494">
+      <div class="halim-item">
+      <a class="halim-thumb" href="{{ route('movie',$Movie_lq->slug) }}" title="Câu Chuyện Kinh Dị Cổ Điển">
+      <figure><img class="lazy img-responsive" src="{{ asset('backend/uploads/Movies/'.$Movie_lq->image) }}" alt="Câu Chuyện Kinh Dị Cổ Điển" title="Câu Chuyện Kinh Dị Cổ Điển"></figure>
+      <span class="status">HD</span><span class="episode"><i class="fa fa-play" aria-hidden="true"></i>Vietsub</span> <div class="icon_overlay"></div>
+      <div class="halim-post-title-box">
+      <div class="halim-post-title ">
+      <p class="entry-title">{{ $Movie_lq->title }}</p><p class="original_title">A Classic Horror Story</p>
+      </div>
+      </div>
+      </a>
+      </div>
+      </article>
+      @endforeach
       </div>
       <script>
          jQuery(document).ready(function($) {				
          var owl = $('#halim_related_movies-2');
          owl.owlCarousel({loop: true,margin: 4,autoplay: true,autoplayTimeout: 4000,autoplayHoverPause: true,nav: true,navText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],responsiveClass: true,responsive: {0: {items:2},480: {items:3}, 600:
-
-     
-      </div>
-      <script>
+         
+         
+         </div>
+         <script>
          jQuery(document).ready(function($) {				
          var owl = $('#halim_related_movies-2');
          owl.owlCarousel({loop: true,margin: 4,autoplay: true,autoplayTimeout: 4000,autoplayHoverPause: true,nav: true,navText: ['<i class="hl-down-open rotate-left"></i>', '<i class="hl-down-open rotate-right"></i>'],responsiveClass: true,responsive: {0: {items:2},480: {items:3}, 600: {items:4},1000: {items: 4}}})});
@@ -142,7 +148,7 @@
       </section>
    </main>
    @include('pages.include.sidebar')
-</div>
+   </div>
 </div>
 <div class="clearfix"></div>
 @endsection
